@@ -176,15 +176,15 @@ function Index() {
             {[
               {
                 n: "01. Análisis",
-                t: "Estudiamos la filosofía de cada arquitecto. Cada línea y material tiene una razón de ser en el espacio físico que debemos traducir al bit.",
+                t: "Comenzamos entendiendo la visión, objetivos y personalidad de cada estudio o profesional. Analizamos su trabajo, sus referentes y la forma en que quiere presentarse para definir una estrategia digital alineada con su identidad.",
               },
               {
                 n: "02. Trazado",
-                t: "Diseñamos estructuras que respiran. Usamos grillas matemáticas y tipografías que evocan la precisión del dibujo técnico.",
+                t: "Organizamos la información y diseñamos la estructura del sitio. Definimos la navegación, jerarquía de contenidos y dirección visual para crear una experiencia clara, coherente y pensada para destacar cada proyecto.",
               },
               {
                 n: "03. Construcción",
-                t: "Desarrollo de alto rendimiento con transiciones suaves, asegurando que la presencia digital sea tan duradera como el concreto.",
+                t: "Transformamos la estrategia y el diseño en una presencia digital sólida. Desarrollamos sitios web rápidos, elegantes y funcionales, cuidando cada detalle para que el resultado refleje la calidad del trabajo que representan.",
               },
             ].map((s) => (
               <div key={s.n} className="flex flex-col gap-6">
@@ -227,13 +227,13 @@ function Index() {
                 <span className="text-[10px] tracking-[0.25em] uppercase opacity-40">Contacto</span>
                 <div className="flex flex-col gap-2 text-sm md:text-base">
                   <a href="mailto:hola@midgardstudios.com" className="hover:opacity-60 transition-opacity break-all">
-                    hola@midgardstudios.com
+                    contacto.midgardstudios@gmail.com
                   </a>
                   <a href="https://instagram.com/midgard.studios" className="hover:opacity-60 transition-opacity">
-                    @midgard.studios
+                    +56 9 3586 3215
                   </a>
                   <a href="https://www.midgardstudios.com" className="hover:opacity-60 transition-opacity">
-                    www.midgardstudios.com
+                    @midgard.studios
                   </a>
                 </div>
               </div>
