@@ -233,24 +233,10 @@ function Index() {
               <div className="flex flex-col gap-5">
                 <span className="text-[10px] tracking-[0.25em] uppercase opacity-40">Contacto</span>
                 <div className="flex flex-col gap-2 text-sm md:text-base">
-                  <a
-                    href="mailto:contacto.midgardstudios@gmail.com"
-                    className="hover:opacity-60 transition-opacity break-all"
-                  >
+                  <span className="select-text cursor-text break-all">
                     contacto.midgardstudios@gmail.com
-                  </a>
-                  <a
-                    href="https://instagram.com/midgardstudioscl"
-                    className="hover:opacity-60 transition-opacity"
-                  >
-                    @midgardstudioscl
-                  </a>
-                  <a
-                    href="https://www.midgardstudios.cl"
-                    className="hover:opacity-60 transition-opacity"
-                  >
-                    +56 9 3586 3215
-                  </a>
+                  </span>
+                  <span className="select-text cursor-text break-all">+56 9 3586 3215</span>
                 </div>
               </div>
               <div className="flex flex-col gap-5">
@@ -278,7 +264,7 @@ function Index() {
                 Instagram
               </a>
               <a
-                href="https://wa.me/56935863215?text=Hola,%20me%20interesa%20tu%20producto"
+                href="https://wa.me/56935863215?text=Hola%2C%20me%20interesa%20dise%C3%B1ar%20el%20sitio%20web%20para%20nuestro%20proyecto%20%2F%20estudio%20de%20dise%C3%B1o.%20Me%20gustar%C3%ADa%20conocer%20sus%20planes%20y%20metodolog%C3%ADa%20de%20trabajo."
                 target="_blank"
                 className="hover:opacity-100 transition-opacity"
               >

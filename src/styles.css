@@ -34,8 +34,8 @@
   --color-carbon: var(--carbon);
   --color-ink: var(--ink);
 
-  --font-serif: 'Cormorant Garamond', serif;
-  --font-sans: 'Hanken Grotesk', sans-serif;
+  --font-serif: "Cormorant Garamond", serif;
+  --font-sans: "Hanken Grotesk", sans-serif;
 }
 
 :root {
@@ -82,7 +82,8 @@
     border-color: var(--color-border);
   }
 
-  html, body {
+  html,
+  body {
     background-color: var(--paper);
     color: var(--ink);
     font-family: var(--font-sans);
@@ -93,15 +94,37 @@
     background-color: var(--carbon);
     color: var(--paper);
   }
+
+  /* Añade esta regla para invertir la selección en fondos oscuros */
+  .bg-carbon ::selection {
+    background-color: var(--paper);
+    color: var(--carbon);
+  }
 }
 
 @keyframes fadeUp {
-  from { opacity: 0; transform: translateY(24px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes lineDraw {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
 }
-.animate-fade-up { opacity: 0; animation: fadeUp 1s cubic-bezier(0.19,1,0.22,1) forwards; }
-.animate-line { transform-origin: left; animation: lineDraw 1.4s cubic-bezier(0.19,1,0.22,1) forwards; }
+.animate-fade-up {
+  opacity: 0;
+  animation: fadeUp 1s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+.animate-line {
+  transform-origin: left;
+  animation: lineDraw 1.4s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}

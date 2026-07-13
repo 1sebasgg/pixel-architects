@@ -78,16 +78,24 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Midgard Studios — Portafolios de arquitectura y presencia digital" },
-      { name: "description", content: "Estudio dedicado al diseño de portafolios de arquitectura y sitios web profesionales. Santiago, Chile." },
+      {
+        name: "description",
+        content:
+          "Estudio dedicado al diseño de portafolios de arquitectura y sitios web profesionales. Santiago, Chile.",
+      },
       { property: "og:title", content: "Midgard Studios" },
       { property: "og:description", content: "Portafolios de arquitectura y presencia digital." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "icon", type: "image/png", href: "/favicon.png" },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Hanken+Grotesk:wght@300;400;500;600&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Hanken+Grotesk:wght@300;400;500;600&display=swap",
+      },
       { rel: "stylesheet", href: appCss },
     ],
   }),
