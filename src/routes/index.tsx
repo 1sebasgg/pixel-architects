@@ -6,7 +6,7 @@ import project02 from "@/assets/project-02.jpg";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Midgard Studios — Portafolios de arquitectura y presencia digital" },
+      { title: "Midgard Studios" },
       {
         name: "description",
         content:
