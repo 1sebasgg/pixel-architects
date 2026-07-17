@@ -1,7 +1,45 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import project01 from "@/assets/project-01.jpg";
-import project02 from "@/assets/project-02.jpg";
+
+const projectImages = import.meta.glob<{ default: string }>("@/assets/project-*.{jpg,jpeg,png}", {
+  eager: true,
+});
+
+interface Project {
+  id: string;
+  number: string;
+  title: string;
+  imagePath: string;
+  alt: string;
+  description: string;
+  colSpan: string;
+  extraClass?: string;
+  link?: string;
+}
+
+const PROJECTS: Project[] = [
+  {
+    id: "casa-de-la-cascada",
+    number: "01/",
+    title: "Casa de la Cascada",
+    imagePath: "/src/assets/project-01.jpg",
+    alt: "Casa brutalista en el bosque",
+    description:
+      "Rediseño de identidad digital para un hito de la arquitectura moderna. Enfoque en la preservación visual y la interactividad técnica.",
+    colSpan: "md:col-span-7",
+  },
+  {
+    id: "studio-valdes",
+    number: "02/",
+    title: "Studio Valdés",
+    imagePath: "/src/assets/project-02.jpg",
+    alt: "Interior de estudio de arquitectura",
+    description:
+      "Portafolio interactivo para firma boutique. Navegación basada en planos técnicos y capas constructivas.",
+    colSpan: "md:col-span-5",
+    extraClass: "md:pt-48",
+  },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -17,8 +55,9 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "Portafolios de arquitectura y presencia digital.",
       },
-      { property: "og:image", content: project01 },
-      { name: "twitter:image", content: project01 },
+      // Obtenemos dinámicamente la imagen para SEO/OpenGraph utilizando el glob import
+      { property: "og:image", content: projectImages["/src/assets/project-01.jpg"]?.default },
+      { name: "twitter:image", content: projectImages["/src/assets/project-01.jpg"]?.default },
     ],
   }),
   component: Index,
@@ -41,13 +80,15 @@ function Index() {
           scrolled ? "mix-blend-normal bg-paper/80 backdrop-blur-md" : "mix-blend-difference"
         }`}
       >
-        <div className="max-w-screen-2xl mx-auto px-6 md:px-12 py-6 grid grid-cols-[minmax(0,1fr)_auto] sm:flex sm:justify-between items-center gap-4">
+        <div className="max-w-screen-2xl mx-auto px-6 md:px-12 py-6 flex flex-col sm:flex-row items-center justify-between gap-4 sm:gap-6">
           <div
-            className={`text-sm font-semibold tracking-[0.3em] uppercase ${scrolled ? "text-ink" : "text-paper"}`}
+            className={`text-sm font-semibold tracking-[0.3em] uppercase shrink-0 ${
+              scrolled ? "text-ink" : "text-paper"
+            }`}
           >
-            Midgard
+            <a href="/">Midgard</a>
           </div>
-          <div className="flex gap-6 sm:gap-12 shrink-0">
+          <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-8 md:gap-12">
             {[
               ["Proyectos", "#proyectos"],
               ["Estudio", "#estudio"],
@@ -111,53 +152,60 @@ function Index() {
             <h2 className="font-serif text-3xl md:text-4xl font-medium truncate">
               Proyectos Seleccionados
             </h2>
-            <span className="text-[11px] font-medium tracking-[0.2em] uppercase opacity-50 shrink-0">
-              Archivo 2024
-            </span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24">
-            <article className="md:col-span-7 group cursor-pointer">
-              <div className="mb-6 flex items-baseline gap-4">
-                <span className="font-serif italic text-2xl opacity-70">01/</span>
-                <h3 className="text-base md:text-xl font-medium tracking-[0.15em] uppercase">
-                  Casa de la Cascada
-                </h3>
-              </div>
-              <div className="w-full aspect-[16/10] overflow-hidden mb-8 ring-1 ring-paper/10">
-                <img
-                  src={project01}
-                  alt="Casa brutalista en el bosque"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-1000"
-                  loading="lazy"
-                />
-              </div>
-              <p className="max-w-[44ch] text-sm md:text-base text-paper/60 leading-relaxed text-pretty">
-                Rediseño de identidad digital para un hito de la arquitectura moderna. Enfoque en la
-                preservación visual y la interactividad técnica.
-              </p>
-            </article>
+            {PROJECTS.map((project) => {
+              const resolvedImage = projectImages[project.imagePath]?.default;
 
-            <article className="md:col-span-5 md:pt-48 group cursor-pointer">
-              <div className="mb-6 flex items-baseline gap-4">
-                <span className="font-serif italic text-2xl opacity-70">02/</span>
-                <h3 className="text-base md:text-xl font-medium tracking-[0.15em] uppercase">
-                  Studio Valdés
-                </h3>
-              </div>
-              <div className="w-full aspect-[4/5] overflow-hidden mb-8 ring-1 ring-paper/10">
-                <img
-                  src={project02}
-                  alt="Interior de estudio de arquitectura"
-                  className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-[1.02] transition-all duration-1000"
-                  loading="lazy"
-                />
-              </div>
-              <p className="max-w-[38ch] text-sm md:text-base text-paper/60 leading-relaxed text-pretty">
-                Portafolio interactivo para firma boutique. Navegación basada en planos técnicos y
-                capas constructivas.
-              </p>
-            </article>
+              // Validamos si es una ruta externa (que empiece con http/https) o interna
+              const isExternal = project.link?.startsWith("http");
+
+              // El elemento de la imagen SIEMPRE tiene las clases de animación al hacer hover en el artículo (group)
+              const ImageElement = (
+                <div
+                  className={`w-full aspect-[16/10] overflow-hidden mb-8 ring-1 ring-paper/10 ${project.link ? "cursor-pointer" : "cursor-default"}`}
+                >
+                  <img
+                    src={resolvedImage}
+                    alt={project.alt}
+                    className="w-full h-full object-cover grayscale group-hover:scale-[1.02] transition-all duration-1000"
+                    loading="lazy"
+                  />
+                </div>
+              );
+
+              return (
+                <article
+                  key={project.id}
+                  className={`${project.colSpan} ${project.extraClass || ""} group`}
+                >
+                  <div className="mb-6 flex items-baseline gap-4">
+                    <span className="font-serif italic text-2xl opacity-70">{project.number}</span>
+                    <h3 className="text-base md:text-xl font-medium tracking-[0.15em] uppercase">
+                      {project.title}
+                    </h3>
+                  </div>
+
+                  {/* Si tiene link, lo envolvemos para que sea clickeable */}
+                  {project.link ? (
+                    isExternal ? (
+                      <a href={project.link} target="_blank" rel="noopener noreferrer">
+                        {ImageElement}
+                      </a>
+                    ) : (
+                      <Link to={project.link}>{ImageElement}</Link>
+                    )
+                  ) : (
+                    ImageElement
+                  )}
+
+                  <p className="max-w-[44ch] text-sm md:text-base text-paper/60 leading-relaxed text-pretty">
+                    {project.description}
+                  </p>
+                </article>
+              );
+            })}
           </div>
         </div>
       </section>
