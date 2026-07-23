@@ -39,7 +39,7 @@ export const PROJECTS: Project[] = [
       "Sitio web dedicado a la exploración del patrimonio en Chile, reuniendo información y lecturas en un diseño simple, intuitivo y accesible para todo usuario.",
     colSpan: "md:col-span-6",
     link: "https://arquitecturaenpapel.cl/",
-    extraClass: "md:pt-48",
+    extraClass: "md:pt-50",
   },
   {
     id: "Diseño web 3D",
@@ -51,6 +51,7 @@ export const PROJECTS: Project[] = [
       "Esta página web está dedicada a la navegación y exploración de modelos 3D, permitiendo a los usuarios visualizar, recorrer e interactuar con representaciones tridimensionales.",
     colSpan: "md:col-span-6",
     link: "https://web-3d-demo.lovable.app/",
+    extraClass: "md:-mt-30",
   },
   {
     id: "Diseño 3D",
@@ -62,6 +63,6 @@ export const PROJECTS: Project[] = [
       "Visualización de modelos 3D mediante vistas específicas, permitiendo explorar espacios de interés. Ofreciendo una experiencia clara y organizada para el análisis del proyecto.",
     colSpan: "md:col-span-6",
     link: "https://modelo3d.lovable.app/",
-    extraClass: "md:pt-48",
+    extraClass: "md:pt-20",
   }
 ];
