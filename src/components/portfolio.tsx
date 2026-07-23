@@ -9,14 +9,12 @@ export function Portfolio() {
     >
       <div className="max-w-screen-2xl mx-auto">
         <div className="mb-12 md:mb-20">
-  <h2 className="font-serif text-4xl md:text-5xl font-medium">
-    Proyectos
-  </h2>
+          <h2 className="font-serif text-4xl md:text-5xl font-medium">Proyectos</h2>
 
-  <p className="mt-3 text-sm md:text-base text-paper/60 tracking-wide">
-    Algunos de nuestros diseños.
-  </p>
-</div>
+          <p className="mt-3 text-sm md:text-base text-paper/60 tracking-wide">
+            Algunos de nuestros diseños.
+          </p>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-16 md:gap-24">
           {PROJECTS.map((project) => {

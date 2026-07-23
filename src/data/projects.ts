@@ -64,5 +64,5 @@ export const PROJECTS: Project[] = [
     colSpan: "md:col-span-6",
     link: "https://modelo3d.lovable.app/",
     extraClass: "md:pt-20",
-  }
+  },
 ];
